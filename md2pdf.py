@@ -48,7 +48,7 @@ def rev2pdf(str, path, filename):
     html = '''</title>
 <link rel="stylesheet" href="http://localhost:880/base.css" />
 </head>
-<body class="container">
+<body class="pdf">
 '''
     end = '''</body>
 </html>'''
