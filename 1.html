@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+1</title>
+<link rel="stylesheet" href="file:///usr/local/Cellar/wkhtmltox/css/base.css" />
+</head>
+<body><div class="container">
+<h4>配置文件：</h4>
+<pre><code><span class="p">[</span><span class="n">db</span><span class="p">]</span>
+<span class="n">db_host</span><span class="o">=</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>
+<span class="n">db_port</span><span class="o">=</span><span class="mi">3306</span>
+<span class="n">db_user</span><span class="o">=</span><span class="n">root</span>
+<span class="n">db_pass</span><span class="o">=</span><span class="n">password</span>
+<span class="p">[</span><span class="n">concurrent</span><span class="p">]</span>
+<span class="n">thread</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">processor</span><span class="o">=</span><span class="mi">20</span>
+</code></pre>
+<h4>ConfigParser</h4>
+<pre><code><span class="kn">import</span> <span class="nn">ConfigParser</span>
+<span class="n">cf</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&quot;./config.txt&quot;</span><span class="p">)</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span>
+<span class="c">#[&quot;db&quot;, &quot;concurrent&quot;]</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s">&quot;db&quot;</span><span class="p">)</span>
+<span class="c">#[&quot;db_host&quot;, &quot;db_port&quot;, &quot;db_user&quot;, &quot;db_pass&quot;]</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s">&quot;db&quot;</span><span class="p">)</span>
+<span class="c">#[(&quot;db_host&quot;, &quot;127.0.0.1&quot;),(&quot;db_port&quot;, &quot;3306&quot;),(&quot;db_user&quot;, &quot;root&quot;),(&quot;db_pass&quot;, &quot;password&quot;)]</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;db&quot;</span><span class="p">,</span> <span class="s">&quot;db_port&quot;</span><span class="p">)</span>
+<span class="c">#&quot;3306&quot;</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="s">&quot;db&quot;</span><span class="p">,</span> <span class="s">&quot;db_port&quot;</span><span class="p">)</span>
+<span class="c">#3306</span>
+</code></pre>
+
+</div></body>
+</html>

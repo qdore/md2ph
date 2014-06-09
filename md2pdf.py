@@ -4,6 +4,7 @@ import markdown2
 import os
 import string
 import re
+from pygments.lexers.asm import CppLexer
 import os.path
 from pygments.lexers.agile import PythonLexer
 import pygments
@@ -13,6 +14,7 @@ import shutil
 reload(sys)
 sys.setdefaultencoding('utf-8')
 nohl = False
+codehl="default"
 def rev2html(str, path, filename):
     title = '''<!DOCTYPE html>
 <html>
@@ -85,6 +87,10 @@ def change(code):
     code = code.replace('&lt;', 'kdhfgkjdshfjghd')
     code = code.replace('&gt;', 'oaakjsadhfkjdsh')
     lex = pygments.lexers.guess_lexer(code)
+    if codehl == 'python':
+        lex = PythonLexer()
+    if codehl[0] is 'c':
+        lex = CppLexer()
     code = pygments.highlight(code, lex, HtmlFormatter())
     code = code[code.find('<pre>') + 5: code.find('</pre>')]
     code = code.replace('kdhfgkjdshfjghd', '&lt;')
@@ -102,9 +108,14 @@ def htmlresove(str):
 for i in range(1 ,len(sys.argv)):
     if  '-nohl' in sys.argv[i]:
         nohl = True
+    if  '-' in sys.argv[i]:
+        if  'nohl' not in sys.argv[i]:
+            codehl = sys.argv[i].replace('-' ,'')
+            codehl = codehl.lower()
+
 
 for i in range(1 ,len(sys.argv)):
-    if  '-nohl' in sys.argv[i]:
+    if  '-' == sys.argv[i][0]:
         continue
     str = pretreat(sys.argv[i])
     str = markdown2.markdown(str, extras=["footnotes"])
