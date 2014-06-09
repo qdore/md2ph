@@ -48,7 +48,7 @@ def rev2pdf(str, path, filename):
     html = '''</title>
 <link rel="stylesheet" href="http://localhost:880/base.css" />
 </head>
-<body class="pdf">
+<body class="container">
 '''
     end = '''</body>
 </html>'''
@@ -60,12 +60,9 @@ def rev2pdf(str, path, filename):
     file.writelines(str)
     file.writelines(end)
     file.close()
-    print('/usr/local/Cellar/wkhtmltox/bin/wkhtmltopdf --margin-top 25mm --margin-left 20mm --margin-right 20mm --margin-bottom 20mm ' \
-              + path + '/' + filenext[0] + '.html.html ' \
-              + path + '/' + filenext[0] + 'pdf')
     os.system('/usr/local/Cellar/wkhtmltox/bin/wkhtmltopdf --margin-top 25mm --margin-left 20mm --margin-right 20mm --margin-bottom 20mm ' \
               + path + '/' + filenext[0] + '.html.html ' \
-              + path + '/' + filenext[0] + '.pdf')
+              + path + '/' + filenext[0] + '.pdf' + ' 2>/dev/null')
     os.remove(path + '/' + filenext[0] + '.html.html')
 
 def pretreat(fi):

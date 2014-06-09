@@ -1,5 +1,5 @@
 #md2ph
-=====
+---
 
 ###使用把markdown转成pdf和html
 
