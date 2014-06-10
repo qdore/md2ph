@@ -4,7 +4,9 @@ import markdown2
 import os
 import string
 import re
+#from pygments.lexers.compiled import JavaLexer, CLexer, CppLexer
 from pygments.lexers.asm import CppLexer
+from pygments.lexers.jvm import JavaLexer
 import os.path
 from pygments.lexers.agile import PythonLexer
 import pygments
@@ -91,6 +93,8 @@ def change(code):
         lex = PythonLexer()
     if codehl[0] is 'c':
         lex = CppLexer()
+    if codehl == 'java':
+        lex = JavaLexer()
     code = pygments.highlight(code, lex, HtmlFormatter())
     code = code[code.find('<pre>') + 5: code.find('</pre>')]
     code = code.replace('kdhfgkjdshfjghd', '&lt;')
