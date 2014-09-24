@@ -9,6 +9,6 @@
 md2html readme.md -nohl(不带语法高亮)
 md2pdf readme.md (生成pdf)
 ####效果：
-![](http://img.my.csdn.net/uploads/201304/16/1366077877_2992.JPG)
+![](https://github.com/qiangwei1992/md2ph/raw/master/QQ20140609-1%402x.png)
 
-![](http://img.my.csdn.net/uploads/201304/16/1366077877_2992.JPG)
+![](https://raw.githubusercontent.com/qiangwei1992/md2ph/master/QQ20140609-2@2x.png)
